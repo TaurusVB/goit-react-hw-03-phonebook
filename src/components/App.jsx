@@ -4,16 +4,23 @@ import Contacts from './Contacts/Contacts';
 import Filter from './Filter/Filter';
 import { MainTitle, ContactsTitle } from './App.styled';
 
+const LS_CONTACTS = 'contacts';
+
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: JSON.parse(localStorage.getItem(LS_CONTACTS)),
     filter: '',
   };
+
+  componentDidMount() {
+    localStorage.setItem(LS_CONTACTS, JSON.stringify(this.state.contacts));
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(LS_CONTACTS, JSON.stringify(this.state.contacts));
+    }
+  }
 
   deleteContact = evt => {
     this.setState({

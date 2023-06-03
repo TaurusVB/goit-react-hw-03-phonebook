@@ -9,11 +9,12 @@ export const ContactsList = styled.ul`
 export const ContactItem = styled.li`
   width: 650px;
   margin: 10px;
+  padding: 5px 15px;
   border: 1px solid black;
   border-radius: 4px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const ContactText = styled.p`
