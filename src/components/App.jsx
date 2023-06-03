@@ -8,7 +8,7 @@ const LS_CONTACTS = 'contacts';
 
 export class App extends Component {
   state = {
-    contacts: JSON.parse(localStorage.getItem(LS_CONTACTS)),
+    contacts: JSON.parse(localStorage.getItem(LS_CONTACTS)) || [],
     filter: '',
   };
 
